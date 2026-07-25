@@ -32,6 +32,7 @@ export default buildConfig({
     client: {
       url: process.env.DATABASE_URI || (process.env.VERCEL ? 'file:/tmp/dharmony.db' : `file:${path.resolve(dirname, 'dharmony.db')}`),
     },
+    push: false,
   }),
   editor: lexicalEditor(),
   sharp,
