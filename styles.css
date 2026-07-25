@@ -1682,30 +1682,30 @@ a {
 
 .mascot-robusta:hover::after,
 .mascot-arabica:hover::after,
-.mascot-robusta.is-hovered::after,
-.mascot-arabica.is-hovered::after {
+.troupe-col.is-hovered .mascot-robusta::after,
+.troupe-col.is-hovered .mascot-arabica::after {
     opacity: 1;
 }
 
 .mascot-robusta:hover::before,
 .mascot-arabica:hover::before,
-.mascot-robusta.is-hovered::before,
-.mascot-arabica.is-hovered::before {
+.troupe-col.is-hovered .mascot-robusta::before,
+.troupe-col.is-hovered .mascot-arabica::before {
     opacity: 0;
 }
 
 .mascot-robusta:hover,
 .mascot-arabica:hover,
-.mascot-robusta.is-hovered,
-.mascot-arabica.is-hovered {
+.troupe-col.is-hovered .mascot-robusta,
+.troupe-col.is-hovered .mascot-arabica {
     transform: translateZ(0);
     filter: drop-shadow(0px 20px 30px rgba(0, 0, 0, 0.82));
 }
 
 .mascot-robusta:hover::after,
 .mascot-arabica:hover::after,
-.mascot-robusta.is-hovered::after,
-.mascot-arabica.is-hovered::after {
+.troupe-col.is-hovered .mascot-robusta::after,
+.troupe-col.is-hovered .mascot-arabica::after {
     animation: mascotHoverPulse 850ms ease-in-out infinite alternate;
 }
 
@@ -2493,8 +2493,8 @@ a {
         transform: translateZ(0);
     }
 
-    .mascot-robusta.is-hovered,
-    .mascot-arabica.is-hovered {
+    .troupe-col.is-hovered .mascot-robusta,
+    .troupe-col.is-hovered .mascot-arabica {
         transform: translateZ(0);
     }
 
