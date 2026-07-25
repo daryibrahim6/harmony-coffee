@@ -10,7 +10,10 @@
     "lint": "eslint .",
     "seed": "tsx scripts/seed-content.ts",
     "migrate-wp": "tsx scripts/migrate-from-wp.ts",
-    "generate-types": "payload generate:types"
+    "generate-types": "payload generate:types",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "visual-test": "node scripts/visual-test.mjs"
   },
   "dependencies": {
     "@payloadcms/db-sqlite": "^3.0.0",
@@ -20,6 +23,7 @@
     "graphql": "^16.9.0",
     "next": "^15.0.0",
     "payload": "^3.0.0",
+    "playwright": "^1.62.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "sharp": "^0.33.0"
@@ -32,6 +36,7 @@
     "eslint": "^8.57.1",
     "eslint-config-next": "^15.5.21",
     "tsx": "^4.19.0",
-    "typescript": "^5.6.0"
+    "typescript": "^5.6.0",
+    "vitest": "^4.1.10"
   }
 }
