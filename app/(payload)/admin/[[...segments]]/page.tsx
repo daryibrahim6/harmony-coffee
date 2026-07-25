@@ -1,4 +1,3 @@
-import type { NextRequest } from 'next/server'
 import { RootPage } from '@payloadcms/next/views'
 import configPromise from '@payload-config'
 import { importMap } from '../importMap.js'

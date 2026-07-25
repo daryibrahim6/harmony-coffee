@@ -18,6 +18,6 @@ export default function PayloadLayout({ children }: Args) {
     children,
     config: Promise.resolve(config),
     importMap,
-    serverFunction: handleServerFunctions as any,
+    serverFunction: handleServerFunctions as unknown as Parameters<typeof RootLayout>[0]['serverFunction'],
   })
 }
