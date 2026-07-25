@@ -2,14 +2,20 @@
 
 import { useEffect, useRef, useState, useCallback } from 'react'
 
+import { Product, Media } from '@/payload-types'
+
+function imageUrl(image: number | Media): string | undefined {
+  return typeof image === 'object' ? image.url ?? undefined : undefined
+}
+
 interface ProductModalProps {
-  robustaProducts: any[]
-  arabicaProducts: any[]
-  whatsappNumber: string
+  robustaProducts: Product[]
+  arabicaProducts: Product[]
+  whatsappNumber: string | null | undefined
 }
 
 interface SelectedProduct {
-  product: any
+  product: Product
   groupLabel: string
 }
 
@@ -101,7 +107,7 @@ export function ProductModal({ robustaProducts, arabicaProducts, whatsappNumber 
     ? 'Bold, full-bodied blends designated for espresso.'
     : 'Single origin specialty, curated for the discerning palate.'
 
-  const handleProductClick = (product: any) => {
+  const handleProductClick = (product: Product) => {
     setSelected({ product, groupLabel })
     setCurrentImageIndex(0)
   }
@@ -112,11 +118,11 @@ export function ProductModal({ robustaProducts, arabicaProducts, whatsappNumber 
   }
 
   const currentProduct = selected?.product
-  const images = currentProduct?.gallery?.map((g: any) => g.image?.url).filter(Boolean) || []
-  const notes = currentProduct?.notes?.map((n: any) => n.note) || []
+  const images = currentProduct?.gallery?.map((g) => imageUrl(g.image)).filter((u): u is string => Boolean(u)) || []
+  const notes = currentProduct?.notes?.map((n) => n.note) || []
   const specs = currentProduct?.specs
   const waText = currentProduct?.waPrefillText || `Hi, I would like to order ${currentProduct?.title}`
-  const waLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(waText)}`
+  const waLink = `https://wa.me/${whatsappNumber ?? ''}?text=${encodeURIComponent(waText)}`
 
   return (
     <div
@@ -144,7 +150,7 @@ export function ProductModal({ robustaProducts, arabicaProducts, whatsappNumber 
             </div>
             <div className="modal-cards">
               {products?.map((product) => {
-                const img = product?.gallery?.[0]?.image?.url
+                const img = product?.gallery?.[0] ? imageUrl(product.gallery[0].image) : undefined
                 return (
                   <article
                     key={product.id}
@@ -189,12 +195,12 @@ export function ProductModal({ robustaProducts, arabicaProducts, whatsappNumber 
                   <>
                     <img
                       src={images[currentImageIndex]}
-                      alt={currentProduct.title}
+                      alt={currentProduct!.title}
                       className="modal-detail__img"
                     />
                     {images.length > 1 && (
                       <div className="modal-detail__thumbs">
-                        {images.map((img: string, i: number) => (
+                        {images.map((img, i) => (
                           <button
                             key={i}
                             className={`modal-detail__thumb ${i === currentImageIndex ? 'is-active' : ''}`}
@@ -211,12 +217,12 @@ export function ProductModal({ robustaProducts, arabicaProducts, whatsappNumber 
               </div>
 
               <div className="modal-detail__info">
-                <h2 className="modal-detail__name">{currentProduct.title}</h2>
-                {currentProduct.origin && (
-                  <p className="modal-detail__origin">{currentProduct.origin}</p>
+                <h2 className="modal-detail__name">{currentProduct!.title}</h2>
+                {currentProduct!.origin && (
+                  <p className="modal-detail__origin">{currentProduct!.origin}</p>
                 )}
-                {currentProduct.shortDesc && (
-                  <p className="modal-detail__shortdesc">{currentProduct.shortDesc}</p>
+                {currentProduct!.shortDesc && (
+                  <p className="modal-detail__shortdesc">{currentProduct!.shortDesc}</p>
                 )}
 
                 {specs && (specs.roast || specs.body || specs.acidity || specs.process) && (
@@ -230,21 +236,21 @@ export function ProductModal({ robustaProducts, arabicaProducts, whatsappNumber 
 
                 {notes.length > 0 && (
                   <div className="modal-detail__notes">
-                    {notes.map((n: string, i: number) => (
+                    {notes.map((n, i) => (
                       <span key={i} className="pill pill--outline">{n}</span>
                     ))}
                   </div>
                 )}
 
-                {currentProduct.longStory && (
+                {currentProduct!.longStory && (
                   <div
                     className="modal-detail__story"
-                    dangerouslySetInnerHTML={{ __html: currentProduct.longStory }}
+                    dangerouslySetInnerHTML={{ __html: currentProduct!.longStory as unknown as string }}
                   />
                 )}
 
-                {currentProduct.priceLabel && (
-                  <p className="modal-detail__price">{currentProduct.priceLabel}</p>
+                {currentProduct!.priceLabel && (
+                  <p className="modal-detail__price">{currentProduct!.priceLabel}</p>
                 )}
 
                 <a

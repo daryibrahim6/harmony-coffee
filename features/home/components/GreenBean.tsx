@@ -1,6 +1,8 @@
+import { Product } from '@/payload-types'
+
 interface GreenBeanProps {
-  products: any[]
-  whatsappNumber: string
+  products: Product[]
+  whatsappNumber: string | null | undefined
 }
 
 export function GreenBean({ products, whatsappNumber }: GreenBeanProps) {
@@ -9,10 +11,11 @@ export function GreenBean({ products, whatsappNumber }: GreenBeanProps) {
   const name = product?.title || 'Arabica Pangrango'
   const origin = product?.origin || 'Single Origin · West Java, Mt. Pangrango'
   const desc = product?.shortDesc || 'Clean, bright green beans with floral notes and honey-like sweetness.'
-  const image = product?.gallery?.[0]?.image?.url || '/assets/products/gayo-arabica.webp'
-  const notes = product?.notes?.map((n: any) => n.note) || ['Floral', 'Honey', 'Citrus']
+  const firstImage = product?.gallery?.[0]?.image
+  const image = (typeof firstImage === 'object' ? firstImage?.url : undefined) || '/assets/products/gayo-arabica.webp'
+  const notes = product?.notes?.map((n) => n.note) || ['Floral', 'Honey', 'Citrus']
   const waText = `Hi, I would like to order Green Bean ${name}`
-  const waLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(waText)}`
+  const waLink = `https://wa.me/${whatsappNumber ?? ''}?text=${encodeURIComponent(waText)}`
 
   return (
     <section className="green-beans-section" id="green" data-theme="light">

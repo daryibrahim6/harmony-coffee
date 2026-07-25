@@ -18,7 +18,7 @@ export const Products: CollectionConfig = {
   hooks: {
     afterChange: [
       async ({ req }) => {
-        if ((req as any).next) {
+        if ((req as { next?: unknown }).next) {
           const { revalidateTag } = await import('next/cache')
           revalidateTag('products')
           const { revalidatePath } = await import('next/cache')

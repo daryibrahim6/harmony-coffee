@@ -28,18 +28,18 @@ export default async function HomePage() {
 
   return (
     <>
-      <Navbar brandName={siteSettings.brandName} />
+      <Navbar />
       <main aria-label="Main content">
         <Hero
-          subtitle={siteSettings.hero.subtitle}
-          title={siteSettings.hero.title}
-          tagline={siteSettings.hero.tagline}
+          subtitle={siteSettings.hero!.subtitle}
+          title={siteSettings.hero!.title}
+          tagline={siteSettings.hero!.tagline}
           whatsappNumber={siteSettings.whatsappNumber}
         />
         <About
-          pullquote={siteSettings.about.pullquote}
-          paragraphs={siteSettings.about.paragraphs}
-          stats={siteSettings.about.stats}
+          pullquote={siteSettings.about!.pullquote}
+          paragraphs={siteSettings.about!.paragraphs}
+          stats={siteSettings.about!.stats}
         />
         <Standard items={standards} />
         <Roasted
@@ -53,17 +53,17 @@ export default async function HomePage() {
         />
         <Testimonials items={testimonials} />
         <CTA
-          preheading={siteSettings.cta.preheading}
-          heading={siteSettings.cta.heading}
-          subtext={siteSettings.cta.subtext}
-          points={siteSettings.cta.points}
+          preheading={siteSettings.cta!.preheading}
+          heading={siteSettings.cta!.heading}
+          subtext={siteSettings.cta!.subtext}
+          points={siteSettings.cta!.points}
           whatsappNumber={siteSettings.whatsappNumber}
         />
       </main>
       <Footer
-        tagline={siteSettings.footer.tagline}
-        address={siteSettings.footer.address}
-        mapUrl={siteSettings.footer.mapUrl}
+        tagline={siteSettings.footer!.tagline}
+        address={siteSettings.footer!.address}
+        mapUrl={siteSettings.footer!.mapUrl}
         social={siteSettings.social}
         whatsappNumber={siteSettings.whatsappNumber}
       />

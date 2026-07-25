@@ -9,7 +9,7 @@ export const SiteSettings: GlobalConfig = {
   hooks: {
     afterChange: [
       async ({ req }) => {
-        if ((req as any).next) {
+        if ((req as { next?: unknown }).next) {
           const { revalidatePath } = await import('next/cache')
           revalidatePath('/')
         }

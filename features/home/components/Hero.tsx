@@ -1,13 +1,13 @@
 interface HeroProps {
-  subtitle: string
-  title: string
-  tagline: string
-  whatsappNumber: string
+  subtitle: string | null | undefined
+  title: string | null | undefined
+  tagline: string | null | undefined
+  whatsappNumber: string | null | undefined
 }
 
 export function Hero({ subtitle, title, tagline, whatsappNumber }: HeroProps) {
-  const waLink = `https://wa.me/${whatsappNumber}`
-  const [titleLine1, titleLine2] = title.split(',')
+  const waLink = `https://wa.me/${whatsappNumber ?? ''}`
+  const [titleLine1, titleLine2] = (title ?? '').split(',')
 
   return (
     <header className="hero" id="hero" data-theme="dark">

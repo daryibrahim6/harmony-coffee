@@ -1,5 +1,7 @@
+import { Standard as StandardType } from '@/payload-types'
+
 interface StandardProps {
-  items: any[]
+  items: StandardType[]
 }
 
 export function Standard({ items }: StandardProps) {
@@ -8,7 +10,7 @@ export function Standard({ items }: StandardProps) {
       <div className="container">
         <div className="standard__header text-center" data-gsap="fade-up">
           <span className="badge badge--red">WHY CHOOSE US</span>
-          <h2 className="section__title mb-12">The D'Harmony Standard</h2>
+          <h2 className="section__title mb-12">The D&apos;Harmony Standard</h2>
         </div>
         <div className="swiss__grid">
           {items?.map((item, i) => (

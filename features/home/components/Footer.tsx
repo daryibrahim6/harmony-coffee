@@ -1,18 +1,18 @@
 interface FooterProps {
-  tagline: string
-  address: string
-  mapUrl: string
+  tagline: string | null | undefined
+  address: string | null | undefined
+  mapUrl: string | null | undefined
   social: {
-    instagram: string
-    tiktok: string
-    shopee: string
-    tokopedia: string
-  }
-  whatsappNumber: string
+    instagram?: string | null
+    tiktok?: string | null
+    shopee?: string | null
+    tokopedia?: string | null
+  } | undefined
+  whatsappNumber: string | null | undefined
 }
 
 export function Footer({ tagline, address, mapUrl, social, whatsappNumber }: FooterProps) {
-  const waLink = `https://wa.me/${whatsappNumber}`
+  const waLink = `https://wa.me/${whatsappNumber ?? ''}`
 
   return (
     <footer className="footer">
@@ -24,16 +24,16 @@ export function Footer({ tagline, address, mapUrl, social, whatsappNumber }: Foo
         <div className="footer__contact">
           <h4 className="footer__label">Visit Us</h4>
           <a
-            href={mapUrl}
+            href={mapUrl ?? '#'}
             target="_blank"
             rel="noopener noreferrer"
             className="footer__address-link"
           >
             <p className="footer__address">
-              {address.split('\n').map((line, i) => (
+              {address?.split('\n').map((line, i) => (
                 <span key={i}>
                   {line}
-                  {i < address.split('\n').length - 1 && <br />}
+                  {i < (address?.split('\n').length ?? 0) - 1 && <br />}
                 </span>
               ))}
             </p>
@@ -114,7 +114,7 @@ export function Footer({ tagline, address, mapUrl, social, whatsappNumber }: Foo
         </div>
       </div>
       <div className="footer__bottom">
-        <p>&copy; {new Date().getFullYear()} D'Harmony Coffee Beans and Roastery. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} D&apos;Harmony Coffee Beans and Roastery. All rights reserved.</p>
       </div>
     </footer>
   )

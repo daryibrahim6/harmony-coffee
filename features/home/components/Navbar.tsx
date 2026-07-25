@@ -3,17 +3,12 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
-interface NavbarProps {
-  brandName: string
-}
-
-export function Navbar({ brandName }: NavbarProps) {
+export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [theme, setTheme] = useState<'dark' | 'light'>('dark')
   const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
-    const nav = document.getElementById('mainNav')
     const sections = document.querySelectorAll('[data-theme]')
     const navLinks = document.querySelectorAll('.nav__links a:not(.nav__cta)')
     let ticking = false
@@ -71,7 +66,7 @@ export function Navbar({ brandName }: NavbarProps) {
         <div className="nav__inner">
           <Link href="/" className="nav__logo nav-brand" aria-label="D'Harmony Home">
             <img src="/assets/logo/logo-icon.webp" alt="D'Harmony Icon" className="brand-icon" />
-            <span className="brand-text">D'Harmony</span>
+            <span className="brand-text">D&apos;Harmony</span>
           </Link>
           <div className={`nav__links ${menuOpen ? 'open' : ''}`} id="navLinks">
             <a href="#about" className="nav-link" data-text="About" onClick={(e) => handleAnchorClick(e, '#about')}>

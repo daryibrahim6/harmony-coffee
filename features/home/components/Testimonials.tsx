@@ -1,5 +1,7 @@
+import { Testimonial } from '@/payload-types'
+
 interface TestimonialsProps {
-  items: any[]
+  items: Testimonial[]
 }
 
 export function Testimonials({ items }: TestimonialsProps) {

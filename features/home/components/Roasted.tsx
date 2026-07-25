@@ -2,13 +2,15 @@
 
 import { useState } from 'react'
 
+import { Product } from '@/payload-types'
+
 interface RoastedProps {
-  robustaProducts: any[]
-  arabicaProducts: any[]
-  whatsappNumber: string
+  robustaProducts: Product[]
+  arabicaProducts: Product[]
+  whatsappNumber: string | null | undefined
 }
 
-export function Roasted({ robustaProducts, arabicaProducts, whatsappNumber }: RoastedProps) {
+export function Roasted({}: RoastedProps) {
   const [activeTroupe, setActiveTroupe] = useState<'robusta' | 'arabica' | null>(null)
 
   return (
