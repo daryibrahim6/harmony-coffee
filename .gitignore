@@ -11,7 +11,7 @@ build/
 # payload
 dharmony.db
 dharmony.db-journal
-media/
+/media/
 
 # misc
 .DS_Store
