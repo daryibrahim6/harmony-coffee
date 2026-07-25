@@ -1,4 +1,4 @@
 {
   "extends": ["next/core-web-vitals", "next/typescript"],
-  "ignorePatterns": ["node_modules/", ".next/", "public/", "wp-theme/"]
+  "ignorePatterns": ["node_modules/", ".next/", "public/", "wp-theme/", "styles.css"]
 }
