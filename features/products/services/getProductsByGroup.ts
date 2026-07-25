@@ -27,7 +27,7 @@ export async function getProductsByGroup(groupSlug: string) {
       depth: 2,
     })
 
-    return productResult.docs
+    return productResult.docs.length > 0 ? productResult.docs : mockProducts[groupSlug] ?? []
   } catch {
     return mockProducts[groupSlug] ?? []
   }
