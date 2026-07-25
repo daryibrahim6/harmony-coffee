@@ -2,6 +2,8 @@ import { RootPage } from '@payloadcms/next/views'
 import configPromise from '@payload-config'
 import { importMap } from '../importMap.js'
 
+export const dynamic = 'force-dynamic'
+
 export const generateMetadata = async () => {
   return {
     title: 'D\'Harmony Admin',

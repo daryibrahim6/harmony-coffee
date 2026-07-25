@@ -16,11 +16,13 @@
     "visual-test": "node scripts/visual-test.mjs"
   },
   "dependencies": {
+    "@libsql/client": "^0.14.0",
     "@payloadcms/db-sqlite": "^3.0.0",
     "@payloadcms/next": "^3.0.0",
     "@payloadcms/richtext-lexical": "^3.0.0",
     "@payloadcms/ui": "^3.0.0",
     "graphql": "^16.9.0",
+    "libsql": "^0.4.6",
     "next": "15.4.11",
     "payload": "^3.0.0",
     "react": "^19.0.0",
