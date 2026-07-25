@@ -1,0 +1,6 @@
+{
+  "buildEnv": {
+    "DATABASE_URI": "file:/tmp/dharmony.db",
+    "PAYLOAD_SECRET": "vercel-demo-secret-2026"
+  }
+}

@@ -30,7 +30,7 @@ export default buildConfig({
   globals: [SiteSettings],
   db: sqliteAdapter({
     client: {
-      url: process.env.DATABASE_URI || `file:${path.resolve(dirname, 'dharmony.db')}`,
+      url: process.env.DATABASE_URI || (process.env.VERCEL ? 'file:/tmp/dharmony.db' : `file:${path.resolve(dirname, 'dharmony.db')}`),
     },
   }),
   editor: lexicalEditor(),
