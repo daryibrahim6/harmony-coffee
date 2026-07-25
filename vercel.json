@@ -1,3 +1,8 @@
 {
-  "framework": "nextjs"
+  "framework": "nextjs",
+  "functions": {
+    "app/(payload)/admin/[[...segments]]/page.tsx": {
+      "memory": 1024
+    }
+  }
 }
