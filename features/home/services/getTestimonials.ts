@@ -7,7 +7,6 @@ export async function getTestimonials() {
     collection: 'testimonials',
     limit: 100,
     sort: 'sortOrder',
-    where: { _status: { equals: 'published' } },
   })
   return result.docs
 }
